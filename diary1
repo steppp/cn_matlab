@@ -1,0 +1,31 @@
+zeros(3, 4)
+
+ans =
+
+     0     0     0     0
+     0     0     0     0
+     0     0     0     0
+
+a = ones(4, 1)
+
+a =
+
+     1
+     1
+     1
+     1
+
+a * ans
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+Incorrect dimensions for matrix multiplication. Check that the number of columns in the first matrix matches the number of rows
+in the second matrix. To perform elementwise multiplication, use '.*'.
+} 
+ans * a
+
+ans =
+
+     0
+     0
+     0
+
+diary off

@@ -1,0 +1,135 @@
+x = linspace(0, pi, 50);
+y = sin(x);
+plot(x, y)
+
+help plot
+ <strong>plot</strong>   Linear plot. 
+    <strong>plot</strong>(X,Y) plots vector Y versus vector X. If X or Y is a matrix,
+    then the vector is plotted versus the rows or columns of the matrix,
+    whichever line up.  If X is a scalar and Y is a vector, disconnected
+    line objects are created and plotted as discrete points vertically at
+    X.
+ 
+    <strong>plot</strong>(Y) plots the columns of Y versus their index.
+    If Y is complex, <strong>plot</strong>(Y) is equivalent to <strong>plot</strong>(real(Y),imag(Y)).
+    In all other uses of <strong>plot</strong>, the imaginary part is ignored.
+ 
+    Various line types, plot symbols and colors may be obtained with
+    <strong>plot</strong>(X,Y,S) where S is a character string made from one element
+    from any or all the following 3 columns:
+ 
+           b     blue          .     point              -     solid
+           g     green         o     circle             :     dotted
+           r     red           x     x-mark             -.    dashdot 
+           c     cyan          +     plus               --    dashed   
+           m     magenta       *     star             (none)  no line
+           y     yellow        s     square
+           k     black         d     diamond
+           w     white         v     triangle (down)
+                               ^     triangle (up)
+                               <     triangle (left)
+                               >     triangle (right)
+                               p     pentagram
+                               h     hexagram
+                          
+    For example, <strong>plot</strong>(X,Y,'c+:') plots a cyan dotted line with a plus 
+    at each data point; <strong>plot</strong>(X,Y,'bd') plots blue diamond at each data 
+    point but does not draw any line.
+ 
+    <strong>plot</strong>(X1,Y1,S1,X2,Y2,S2,X3,Y3,S3,...) combines the plots defined by
+    the (X,Y,S) triples, where the X's and Y's are vectors or matrices 
+    and the S's are strings.  
+ 
+    For example, <strong>plot</strong>(X,Y,'y-',X,Y,'go') plots the data twice, with a
+    solid yellow line interpolating green circles at the data points.
+ 
+    The <strong>plot</strong> command, if no color is specified, makes automatic use of
+    the colors specified by the axes ColorOrder property.  By default,
+    <strong>plot</strong> cycles through the colors in the ColorOrder property.  For
+    monochrome systems, <strong>plot</strong> cycles over the axes LineStyleOrder property.
+ 
+    Note that RGB colors in the ColorOrder property may differ from
+    similarly-named colors in the (X,Y,S) triples.  For example, the 
+    second axes ColorOrder property is medium green with RGB [0 .5 0],
+    while <strong>plot</strong>(X,Y,'g') plots a green line with RGB [0 1 0].
+ 
+    If you do not specify a marker type, <strong>plot</strong> uses no marker. 
+    If you do not specify a line style, <strong>plot</strong> uses a solid line.
+ 
+    <strong>plot</strong>(AX,...) plots into the axes with handle AX.
+ 
+    <strong>plot</strong> returns a column vector of handles to lineseries objects, one
+    handle per plotted line. 
+ 
+    The X,Y pairs, or X,Y,S triples, can be followed by 
+    parameter/value pairs to specify additional properties 
+    of the lines. For example, <strong>plot</strong>(X,Y,'LineWidth',2,'Color',[.6 0 0]) 
+    will create a plot with a dark red line width of 2 points.
+ 
+    Example
+       x = -pi:pi/10:pi;
+       y = tan(sin(x)) - sin(tan(x));
+       plot(x,y,'--rs','LineWidth',2,...
+                       'MarkerEdgeColor','k',...
+                       'MarkerFaceColor','g',...
+                       'MarkerSize',10)
+ 
+    See also <a href="matlab:help plottools">plottools</a>, <a href="matlab:help semilogx">semilogx</a>, <a href="matlab:help semilogy">semilogy</a>, <a href="matlab:help loglog">loglog</a>, <a href="matlab:help plotyy">plotyy</a>, <a href="matlab:help plot3">plot3</a>, <a href="matlab:help grid">grid</a>,
+    <a href="matlab:help title">title</a>, <a href="matlab:help xlabel">xlabel</a>, <a href="matlab:help ylabel">ylabel</a>, <a href="matlab:help axis">axis</a>, <a href="matlab:help axes">axes</a>, <a href="matlab:help hold">hold</a>, <a href="matlab:help legend">legend</a>, <a href="matlab:help subplot">subplot</a>, <a href="matlab:help scatter">scatter</a>.
+
+    <a href="matlab:doc plot">Reference page for plot</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('plot')">Other functions named plot</a>
+
+% grafico custom
+plot(x, y, 'r+:')
+figure
+% il prossimo comando grafico verrà inserito in quest nuova finestra
+plot(x, y, 'mo--')
+plot(x, y, 'r+:')
+z = cos(x)
+
+z =
+
+  Columns 1 through 12
+
+    1.0000    0.9979    0.9918    0.9816    0.9673    0.9491    0.9269    0.9010    0.8713    0.8381    0.8014    0.7614
+
+  Columns 13 through 24
+
+    0.7183    0.6723    0.6235    0.5721    0.5184    0.4625    0.4048    0.3454    0.2845    0.2225    0.1596    0.0960
+
+  Columns 25 through 36
+
+    0.0321   -0.0321   -0.0960   -0.1596   -0.2225   -0.2845   -0.3454   -0.4048   -0.4625   -0.5184   -0.5721   -0.6235
+
+  Columns 37 through 48
+
+   -0.6723   -0.7183   -0.7614   -0.8014   -0.8381   -0.8713   -0.9010   -0.9269   -0.9491   -0.9673   -0.9816   -0.9918
+
+  Columns 49 through 50
+
+   -0.9979   -1.0000
+
+plot(x, y, 'r+:', x, z, 'bo')
+close all
+plot(x, y, 'mo--')
+plot(x, y, 'r+:')
+
+% indico di non eliminare il grafico precedente
+hold on
+plot(x, z)
+
+% rilascio la finestra con i grafici
+hold off
+
+% grafico in scala logaritmica sull'asse x/y/entrambi
+semilogx(x, y)
+semilog(x, y)
+{Undefined function or variable 'semilog'.
+} 
+semilogy(x, y)
+semiloglog(x, y)
+{Undefined function or variable 'semiloglog'.
+} 
+loglog(x, y)
+diary off

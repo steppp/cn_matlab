@@ -1,0 +1,114 @@
+% identificare un elemento della matrice
+a(2, 2)
+
+ans =
+
+     1
+
+
+% estrarre una sottomatrice
+% creare un vettore v
+v=1:1:10
+
+v =
+
+     1     2     3     4     5     6     7     8     9    10
+
+% sintassi: partenza, passo, fine
+
+% GLI INDICI IN MATLAB PARTONO DA 1
+
+% estrazione di una sottomatrice
+% righe 1 e 2, colonne 1, 2 e 3
+A = [1 2 3; 4 5 6; 7 8 9]
+
+A =
+
+     1     2     3
+     4     5     6
+     7     8     9
+
+z = [1:2; 1:3]
+{Dimensions of arrays being concatenated are not consistent.
+} 
+z = A(1:2, 1:3)
+
+z =
+
+     1     2     3
+     4     5     6
+
+
+% concatenazione di matrici
+T = [A z]
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('horzcat')" style="font-weight:bold">horzcat</a>
+Dimensions of arrays being concatenated are not consistent.
+} 
+T = [A;[1;2;3]]
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('vertcat')" style="font-weight:bold">vertcat</a>
+Dimensions of arrays being concatenated are not consistent.
+} 
+T = [A,[1;2;3]]
+
+T =
+
+     1     2     3     1
+     4     5     6     2
+     7     8     9     3
+
+
+% funzione reshape
+help reshape
+ <strong>reshape</strong> Reshape array.
+    <strong>reshape</strong>(X,M,N) or <strong>reshape</strong>(X,[M,N]) returns the M-by-N matrix 
+    whose elements are taken columnwise from X. An error results 
+    if X does not have M*N elements.
+ 
+    <strong>reshape</strong>(X,M,N,P,...) or <strong>reshape</strong>(X,[M,N,P,...]) returns an 
+    N-D array with the same elements as X but reshaped to have 
+    the size M-by-N-by-P-by-.... The product of the specified
+    dimensions, M*N*P*..., must be the same as NUMEL(X).
+ 
+    <strong>reshape</strong>(X,...,[],...) calculates the length of the dimension
+    represented by [], such that the product of the dimensions 
+    equals NUMEL(X). The value of NUMEL(X) must be evenly divisible 
+    by the product of the specified dimensions. You can use only one 
+    occurrence of [].
+ 
+    See also <a href="matlab:help squeeze">squeeze</a>, <a href="matlab:help shiftdim">shiftdim</a>, <a href="matlab:help colon">colon</a>.
+
+    <a href="matlab:doc reshape">Reference page for reshape</a>
+    <a href="matlab:matlab.internal.language.introspective.overloads.displayOverloads('reshape')">Other functions named reshape</a>
+
+b
+
+b =
+
+     1     2
+     3     4
+
+reshape(a,1,4)
+
+ans =
+
+     1     1     1     1
+
+reshape(b,1,4)
+
+ans =
+
+     1     3     2     4
+
+% ottengo un vettore riga con 4 colonne
+% ottengo 1 3 2 4 perché in matlab le matrici vengono memorizzate per colonne
+% quindi reshape funziona sempre per colonne
+
+reshape(b', 1, 4)
+
+ans =
+
+     1     2     3     4
+
+% calcolando la trasposta posso ottenere un effetto C-like
+
+diary off

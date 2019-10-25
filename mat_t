@@ -1,0 +1,220 @@
+x = linspace(0, 1, 10)
+
+x =
+
+         0    0.1111    0.2222    0.3333    0.4444    0.5556    0.6667    0.7778    0.8889    1.0000
+
+y=x'
+
+y =
+
+         0
+    0.1111
+    0.2222
+    0.3333
+    0.4444
+    0.5556
+    0.6667
+    0.7778
+    0.8889
+    1.0000
+
+a = ones(2)
+
+a =
+
+     1     1
+     1     1
+
+b = [1 2 3, 4 5 6]
+
+b =
+
+     1     2     3     4     5     6
+
+b = [1 2 3; 4 5 6]
+
+b =
+
+     1     2     3
+     4     5     6
+
+b = [1 2; 3 4]
+
+b =
+
+     1     2
+     3     4
+
+c = a+b
+
+c =
+
+     2     3
+     4     5
+
+d=b-a
+
+d =
+
+     0     1
+     2     3
+
+e = a*b
+
+e =
+
+     4     6
+     4     6
+
+el=a.*b
+
+el =
+
+     1     2
+     3     4
+
+%moltiplicaizone elemento per elemento
+eldiv = a./b
+
+eldiv =
+
+    1.0000    0.5000
+    0.3333    0.2500
+
+% divisione elemento per elemento
+a^2
+
+ans =
+
+     2     2
+     2     2
+
+% prodotto matrice vettore
+a.^2
+
+ans =
+
+     1     1
+     1     1
+
+b.^2
+
+ans =
+
+     1     4
+     9    16
+
+% elevamento al quadrato della matrice
+sin(a)
+
+ans =
+
+    0.8415    0.8415
+    0.8415    0.8415
+
+% calcolo del seno per ogni elemento di a
+
+help matfun
+  Matrix <a href="matlab:help functions">functions</a>    - numerical linear algebra.
+ 
+  Matrix analysis.
+    <a href="matlab:help bandwidth">bandwidth</a>      - Matrix bandwidth.
+    <a href="matlab:help isbanded">isbanded</a>       - Determine whether a matrix has certain bandwidth.
+    <a href="matlab:help isdiag">isdiag</a>         - Determine whether a matrix is diagonal.
+    <a href="matlab:help ishermitian">ishermitian</a>    - Determine whether a matrix is Hermitian.
+    <a href="matlab:help issymmetric">issymmetric</a>    - Determine whether a matrix is symmetric.
+    <a href="matlab:help istril">istril</a>         - Determine whether a matrix is lower triangular.
+    <a href="matlab:help istriu">istriu</a>         - Determine whether a matrix is upper triangular.
+    <a href="matlab:help norm">norm</a>           - Matrix or vector norm.
+    <a href="matlab:help vecnorm">vecnorm</a>        - Vector norm.
+    <a href="matlab:help normest">normest</a>        - Estimate the matrix 2-norm.
+    <a href="matlab:help rank">rank</a>           - Matrix rank.
+    <a href="matlab:help det">det</a>            - Determinant.
+    <a href="matlab:help trace">trace</a>          - Sum of diagonal elements.
+    <a href="matlab:help null">null</a>           - Null space.
+    <a href="matlab:help orth">orth</a>           - Orthogonalization.
+    <a href="matlab:help rref">rref</a>           - Reduced row echelon form.
+    <a href="matlab:help subspace">subspace</a>       - Angle between two subspaces.
+ 
+  Linear equations.
+    \ <a href="matlab:help and">and</a> /        - Linear equation solution; use "help slash".
+    <a href="matlab:help linsolve">linsolve</a>       - Linear equation solution with extra control.
+    <a href="matlab:help decomposition">decomposition</a>  - Linear equation solution using precomputed object.
+    <a href="matlab:help inv">inv</a>            - Matrix inverse.
+    <a href="matlab:help rcond">rcond</a>          - LAPACK reciprocal condition estimator
+    <a href="matlab:help cond">cond</a>           - Condition number with respect to inversion.
+    <a href="matlab:help condest">condest</a>        - 1-norm condition number estimate.
+    <a href="matlab:help normest1">normest1</a>       - 1-norm estimate.
+    <a href="matlab:help chol">chol</a>           - Cholesky factorization.
+    <a href="matlab:help ldl">ldl</a>            - Block LDL' factorization.
+    <a href="matlab:help lu">lu</a>             - LU factorization.
+    <a href="matlab:help qr">qr</a>             - Orthogonal-triangular decomposition.
+    <a href="matlab:help pinv">pinv</a>           - Pseudoinverse.
+    <a href="matlab:help lsqminnorm">lsqminnorm</a>     - Least squares with minimum norm of x.
+    <a href="matlab:help lscov">lscov</a>          - Least squares with known covariance.
+    <a href="matlab:help sylvester">sylvester</a>      - Sylvester equation solver.
+ 
+  Eigenvalues and singular values.
+    <a href="matlab:help eig">eig</a>            - Eigenvalues and eigenvectors.
+    <a href="matlab:help svd">svd</a>            - Singular value decomposition.
+    <a href="matlab:help gsvd">gsvd</a>           - Generalized singular value decomposition.
+    <a href="matlab:help eigs">eigs</a>           - A few eigenvalues.
+    <a href="matlab:help svds">svds</a>           - A few singular values.
+    <a href="matlab:help poly">poly</a>           - Characteristic polynomial.
+    <a href="matlab:help polyeig">polyeig</a>        - Polynomial eigenvalue problem.
+    <a href="matlab:help condeig">condeig</a>        - Condition number with respect to eigenvalues.
+    <a href="matlab:help hess">hess</a>           - Hessenberg form.
+    <a href="matlab:help schur">schur</a>          - Schur decomposition.
+    <a href="matlab:help qz">qz</a>             - QZ factorization for generalized eigenvalues.
+    <a href="matlab:help ordschur">ordschur</a>       - Reordering of eigenvalues in Schur decomposition.
+    <a href="matlab:help ordqz">ordqz</a>          - Reordering of eigenvalues in QZ factorization.
+    <a href="matlab:help ordeig">ordeig</a>         - Eigenvalues of quasitriangular matrices.
+ 
+  Matrix functions.
+    <a href="matlab:help expm">expm</a>           - Matrix exponential.
+    <a href="matlab:help logm">logm</a>           - Matrix logarithm.
+    <a href="matlab:help sqrtm">sqrtm</a>          - Matrix square root.
+    <a href="matlab:help funm">funm</a>           - Evaluate general matrix function.
+ 
+  Factorization utilities
+    <a href="matlab:help qrdelete">qrdelete</a>       - Delete a column or row from QR factorization.
+    <a href="matlab:help qrinsert">qrinsert</a>       - Insert a column or row into QR factorization.
+    <a href="matlab:help rsf2csf">rsf2csf</a>        - Real block diagonal form to complex diagonal form.
+    <a href="matlab:help cdf2rdf">cdf2rdf</a>        - Complex diagonal form to real block diagonal form.
+    <a href="matlab:help balance">balance</a>        - Diagonal scaling to improve eigenvalue accuracy.
+    <a href="matlab:help planerot">planerot</a>       - Givens plane rotation.
+    <a href="matlab:help cholupdate">cholupdate</a>     - rank 1 update to Cholesky factorization.
+    <a href="matlab:help qrupdate">qrupdate</a>       - rank 1 update to QR factorization.
+
+sin(90)
+
+ans =
+
+    0.8940
+
+sin(2pi)
+ sin(2pi)
+      ↑
+{Error: Invalid expression. Check for missing multiplication operator, missing or unbalanced delimiters, or other syntax error. To
+construct matrices, use brackets instead of parentheses.
+} 
+sin(2*pi)
+
+ans =
+
+  -2.4493e-16
+
+sin(0)
+
+ans =
+
+     0
+
+cos(0)
+
+ans =
+
+     1
+
+diary off
