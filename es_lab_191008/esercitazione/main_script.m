@@ -24,3 +24,25 @@ while 1+eps_calc/2 > 1
 end
     
 eps_calc
+
+
+% =====  ES. 3  =====
+
+n_pi = 2000;
+pi_calc = 1;
+sign = -1;
+
+for i = 1:n_pi
+    pi_calc = pi_calc + (sign * 1/(i*2 + 1));
+    sign = sign * -1;
+end
+
+abs(pi_calc * 4 - pi)
+
+
+% =====  ES. 4  =====
+
+n_e = 10000000;
+e_calc = (1 + 1/n_e)^n_e
+%e = exp(1)
+
