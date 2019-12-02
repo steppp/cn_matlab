@@ -1,7 +1,9 @@
 % GENERATE LINEAR SYSTEM
-n = 10000;
+n = 15;
 A = randn(n);
-x = zeros(n, 1) + 1
+%A = hilb(n);
+%A = ones(n) + eye(n) + eye(n) * 0.001
+x = zeros(n, 1) + 1;
 b = A * x;
 
 % GET CONDITION NUMBER

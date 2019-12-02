@@ -12,5 +12,5 @@ exp_err = abs((exp_d - exp(1)) / exp(1));
 loglog(h, exp_err)
 
 % get the minimum error and check it against eps
-min(exp_err)
+h_min = min(exp_err)
 eps
