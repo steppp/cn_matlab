@@ -1,5 +1,16 @@
+% DEFINE RANDOM VARIABLES
+n_rand_min = 10;
+n_rand_max = 1000;
+n_hilb_min = 2;
+n_hilb_max = 15;
+n_sp_min = 50;
+n_sp_max = 5000;
+
+n_min = n_rand_min;
+n_max = n_rand_max;
+
 % GENERATE LINEAR SYSTEM
-n = 15;
+n = randi(n_max - n_min, 1) + n_min;
 A = randn(n);
 %A = hilb(n);
 %A = ones(n) + eye(n) + eye(n) * 0.001
@@ -8,7 +19,6 @@ b = A * x;
 
 % GET CONDITION NUMBER
 C = cond(A)
-
 
 % LR FACTORIZATION
 tic();

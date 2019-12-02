@@ -24,6 +24,7 @@ while 1+eps_calc/2 > 1
 end
     
 eps_calc
+e_mach = eps
 
 
 % =====  ES. 3  =====
@@ -37,7 +38,7 @@ for i = 1:n_pi
     sign = sign * -1;
 end
 
-abs(pi_calc * 4 - pi)
+err_pi = abs(pi_calc * 4 - pi)
 
 
 % =====  ES. 4  =====
