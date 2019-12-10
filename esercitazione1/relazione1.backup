@@ -1,0 +1,44 @@
+# Relazione 1
+
+La prima esercitazione aveva come scopo quello di prendere confidenza con la rappresentazione dei numeri finiti in MATLAB e degli errori che derivano da approssimazioni ed operazioni utilizzando tale insieme di numeri.
+
+
+## Es. 1
+Il primo esercizio chiedeva di calcolare i parametri dell'insieme di numeri finiti usato da MATLAB.
+
+**L** si ottiene banalmente calcolando il logaritmo in base 2 di *realmin*, mentre la formula per ottenere **U** è più complessa dal momento che *realmax* si ottiene da *(2-`ε`)⋅2^U* . I risultati sono quindi **L = -1022** e **U = 1023**, come previsto.
+
+Il valore di **t** si ottiene da *ε = 2^(1-t)*, uguagliandolo a , ed il risultato è **53**, come previsto dallo standard IEEE double precision.
+
+Calcolando **UFL** ed **OFL** usando i valori appena trovati di **L** ed **U** i risultati sono corretti, avendo **UFL =  2.2251e-308** ed **OFL = 1.7977e+308**.
+
+
+## Es. 2
+Nel secondo esercizio veniva chiesto di calcolare *eps* usando una delle sue definizioni, cioè *fl(1 + ε) > 1*, formula che diventerà la condizione di terminazione del ciclo usato per calcolare ε.
+
+Partendo da *ε = 1* e dimezzandolo ad ogni iterazione, il risultato finale è proprio **2.2204e-16**, che corrisponde proprio al valore di *ε* fornito da MATLAB.
+
+In questo caso non ci sono errori di troncamento in quanto il procedimento originario non è infinito, e quindi non viene troncato, ma viene applicata esattamente la definizione di *ε*.
+
+
+## Es. 3
+Nel terzo esercizio si chiedeva di calcolare il valore di *π* utilizzando l'apposita **formula di Leibniz**.
+
+Il grafico seguente è stato ottenuto calcolando più volte la formula di Leibniz per *π* per diversi valori di *n*. Sull'asse x sono rappresentati i diversi valori di *n*, mentre sull'asse y è indicato l'errore relativo.
+
+![pi](pi.png)
+
+Come si può notare, la successione converge molto lentamente, e per *n = 10000* solamente le prime 3 cifre decimali sono certe essere corrette.
+
+L'errore preponderante in questo caso è l'**errore di troncamento** dovuto al fatto che il procedimento infinito per cui la formula di Leibniz converge viene troncato all'n-esimo termine, come ci si aspettava.
+
+
+## Es. 4
+Nel quarto esercizio veniva chiesto di calcolare un'approssimazione di *e* attraverso il limite per x che tende ad infinito della successione *(1+1/n)^n*, per valori di n arbitrariamente grandi.
+
+Il grafico seguente mostra l'errore realtivo del valore approssimato in funzione di n.
+
+![e](e.png)
+
+Dal grafico si può notare che l'errore minimo si ottiene per *n = 10^8*. Da quel punto in poi, il risultato tende a divergere dal valore esatto di *e* a causa di **errori di arrotondamento**.
+
