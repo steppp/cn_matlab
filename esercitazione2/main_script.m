@@ -10,42 +10,23 @@ n_min = n_rand_min;
 n_max = n_rand_max;
 
 % GENERATE LINEAR SYSTEM
-n = randi(n_max - n_min, 1) + n_min;
-A = randn(n);
 %A = hilb(n);
 %A = ones(n) + eye(n) + eye(n) * 0.001
-x = zeros(n, 1) + 1;
-b = A * x;
+interval = 1:100;
+t = interval;
+n = interval;
+C = interval;
+err = interval;
 
-% GET CONDITION NUMBER
-C = cond(A)
-
-% LR FACTORIZATION
-tic();
-tmp = gauss_elim(A);
-U = triu(tmp);                              % get upper tri. mat.
-L = eye(size(A, 1)) + tril(tmp, -1);        % get lower tri. mat. and add the main diagonal
-y = lowmat_solver(L, b);                    % solve for Ly = b
-x_sol = uppmat_solver(U, y)                 % get the solution by solving Ux = y
-t_lr = toc()
-
-
-% LR FACTORIZATION WITH PIVOTING
-tic();
-% get upper and lower triangular matrices
-[L_piv, U_piv, P] = lu(A);                  % get L, U and the permutation matrix P
-y_piv = lowmat_solver(L_piv, P * b);        % solve Ly = Pb
-x_piv_sol = uppmat_solver(U_piv, y_piv)     % solve Ux = y
-t_lr_piv = toc()
-
-
-% CHOLESKY FACTORIZATION
-tic();
-[U_chol, p] = chol(A);
-if p == 0                                   % A must be simmetric and positive definite
-    y_chol = lowmat_solver(U_chol', b);
-    x_chol_sol = uppmat_solver(U_chol, y_chol)
-    t_chol = toc()
-else
-    t_chol = toc();
+for i=interval
+    ni = i*10
+    A = randn(ni);
+    [ti, sol, Ci] = lr_solver(A, ni);
+    t(i) = ti;
+    n(i) = ni;
+    C(i) = Ci;
+    x = zeros(ni, 1) + 1;
+    err(i) = norm(sol - x, 2) / norm(x, 2);
 end
+
+semilogy(n, (err - min(err)) / max(err - min(err)), "r", n, (t - min(t)) / max(t - min(t)), "b", n, (C - min(C)) / max(C - min(C)), "k")
