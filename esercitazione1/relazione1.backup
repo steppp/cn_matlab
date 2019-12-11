@@ -40,5 +40,17 @@ Il grafico seguente mostra l'errore realtivo del valore approssimato in funzione
 
 ![e](e.png)
 
-Dal grafico si può notare che l'errore minimo si ottiene per *n = 10^8*. Da quel punto in poi, il risultato tende a divergere dal valore esatto di *e* a causa di **errori di arrotondamento**.
+Dal grafico si può notare che l'errore minimo si ottiene per *n = 10^8*. Per valori di *n* più piccoli o più grandi, il risultato tende a divergere dal valore esatto di *e* a causa di **errori di arrotondamento**.
 
+La fonte di errore principale è la somma *1 + 1/n*, che genera un errore grande tanto quanto *n*. Tale errore viene poi amplificato dall'elevamento a potenza, che porta ad un risultato che si allontana sempre di più dal risultato esatto della successione per valori di *n* maggiori di *10^8*.
+
+
+## Es. 5
+
+Nell'ultimo esercizio la richiesta era quella di calcolare l'approssimazione della derivata prima di una funzione usando la formula del rapporto incrementale per diversi valori dell'incremento *h*. Nell'esercizio la funzione da derivare doveva essere *e^x*, nel caso di *x = 1*.
+
+Il grafico seguente mostra come varia l'errore relativo in funzione di *h*, per valori che vanno da *10^-16 a 10^-1*.
+
+![df](df.png)
+
+L'errore minimo è *1.8766e-08*, si ottiene in corrispondenza di *h = 10^-8*, ed è di diversi ordini di grandezza più grande di *ε*, prevalentemente a causa della propagazione dell'errore nele operazioni. Per valori più piccoli, gli errori dovuti alle approssimazioni delle operazioni in aritmetica finita pesano molto sul risultato, mentre per valori maggiori l'approssimazione risulta poco precisa a causa di valori troppo "grandi" di *h*.

@@ -6,7 +6,7 @@ df = @(x) (f(x + h) - f(x)) ./ h;
 exp_d = df(1);
 
 % get the relative errors
-exp_err = abs((exp_d - exp(1)) / exp(1));
+exp_err = abs((exp_d - exp(1)) ./ exp(1));
 
 % get the loglog graph
 loglog(h, exp_err)
