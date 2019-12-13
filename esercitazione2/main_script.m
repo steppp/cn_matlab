@@ -28,6 +28,7 @@ for i=interval
     A = diag(ones(1, n-1), -1);
     A = A + diag(ones(1, n-1), 1);
     A = A + (eye(n) * 2.001);
+    [B, d] = spdiags(A);
 
     %{
     [ti, sol, Ci] = lr_solver(A, ni);
