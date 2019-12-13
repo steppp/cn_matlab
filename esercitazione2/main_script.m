@@ -18,15 +18,23 @@ n = interval;
 C = interval;
 err = interval;
 
+pt = interval;
+pC = interval;
+
 for i=interval
     ni = i*10
     A = randn(ni);
+    
     [ti, sol, Ci] = lr_solver(A, ni);
     t(i) = ti;
     n(i) = ni;
     C(i) = Ci;
     x = zeros(ni, 1) + 1;
     err(i) = norm(sol - x, 2) / norm(x, 2);
+    
+    [pti, psol, pCi] = lrpiv_solver(A, ni);
+    pt(i) = pti;
+    pC(i) = pCi;
 end
 
-semilogy(n, (err - min(err)) / max(err - min(err)), "r", n, (t - min(t)) / max(t - min(t)), "b", n, (C - min(C)) / max(C - min(C)), "k")
+%semilogy(n, (err - min(err)) / max(err - min(err)), "r", n, (t - min(t)) / max(t - min(t)), "b", n, (C - min(C)) / max(C - min(C)), "k")
