@@ -1,17 +1,22 @@
-function [outputArg1,outputArg2] = untitled5(inputArg1,inputArg2)
+function [t, sol, C] = chol_solver(A, n)
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
 
+x = zeros(n, 1) + 1;
+b = A * x;
+
+%get condition number
+C = cond(A);
+
 % CHOLESKY FACTORIZATION
 tic();
-[U_chol, p] = chol(A);
-if p == 0                                   % A must be simmetric and positive definite
-    y_chol = lowmat_solver(U_chol', b);
-    x_chol_sol = uppmat_solver(U_chol, y_chol)
-    t_chol = toc()
-else
-    t_chol = toc();
-end
+[U, p] = chol(A);
+sol = 0;
+t = 0;
 
+if p == 0   % A must be simmetric and positive definite
+    y = lowmat_solver(U', b);
+    sol = uppmat_solver(U, y);
+    t = toc();
 end
 
