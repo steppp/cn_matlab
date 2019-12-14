@@ -1,5 +1,5 @@
 % read images and get parameters
-A = imread('relazione/iss.jpg');
+A = imread('relazione/venice.jpg');
 A = im2double(A);
 
 nRows = size(A, 1);
@@ -7,7 +7,7 @@ nCols = size(A, 2);
 n = floor(min(nRows, nCols) / 10);
 
 if (size(A, 3) > 1)
-    [Rr, Rg, Rb] = svd_all_channels(A);
+    [Rr, Rg, Rb] = svd_all_channels(A, 1);
 
     redOnly = zeros(nRows, nCols, 3);
     redOnly(:, :, 1) = Rr;
@@ -29,8 +29,17 @@ if (size(A, 3) > 1)
     figure
     imshow(allChannels);
 else
-    Ap = svd_single_channel(A);
+    err = 0;
+    c = 0;
+    interval = 1:min(nRows, nCols);
 
-    figure
-    imshow(Ap);
+    for i = interval
+        disp(i);
+        [Ap, e_rel, compression] = svd_single_channel(A, 0, i);
+        
+        err(i) = e_rel * 100;
+        c(i) = compression;
+        %figure
+        %imshow(Ap);
+    end
 end
