@@ -1,5 +1,5 @@
 % read images and get parameters
-A = imread('relazione/venice.jpg');
+A = imread('relazione/im_buzz/buzz.jpg');
 A = im2double(A);
 
 nRows = size(A, 1);
@@ -29,17 +29,38 @@ if (size(A, 3) > 1)
     figure
     imshow(allChannels);
 else
-    err = 0;
-    c = 0;
-    interval = 1:min(nRows, nCols);
+    % autoimmagine relativa al primo valore singolare
+    [Ap, e_rel, compression] = svd_single_channel(A, 0, 1);
+    figure
+    imshow(Ap);
 
-    for i = interval
-        disp(i);
-        [Ap, e_rel, compression] = svd_single_channel(A, 0, i);
-        
-        err(i) = e_rel * 100;
-        c(i) = compression;
-        %figure
-        %imshow(Ap);
-    end
+    % autoimmagine relativa al secondo valore singolare
+    p = min(nRows, nCols);
+    [Ap, e_rel, compression] = svd_single_channel(A, p-1, p);
+    figure
+    imshow(Ap);
+
+    % altre immagini G^(k)
+    [Ap, e_rel, compression] = svd_single_channel(A, 0, 20);
+    figure
+    imshow(Ap);
+
+    [Ap, e_rel, compression] = svd_single_channel(A, 0, 60);
+    figure
+    imshow(Ap);
+
+    [Ap, e_rel, compression] = svd_single_channel(A, 0, 100);
+    figure
+    imshow(Ap);
+
+    % minimum dimension / 5
+    [Ap, e_rel, compression] = svd_single_channel(A);
+    figure
+    imshow(Ap);
+
+    % autoimmagine relativa ai valori singolari più piccoli
+    [Ap, e_rel, compression] = svd_single_channel(A, 60, p);
+    figure
+    imshow(Ap);
+
 end

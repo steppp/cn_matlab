@@ -6,11 +6,14 @@ nCols = size(A, 2);
 
 if nargin == 1
     n_lo = 0;
-    n_hi = floor(min(nRows, nCols) / 10);
+    n_hi = floor(min(nRows, nCols) / 4);
 elseif nargin == 2
     n_hi = n_lo;
     n_lo = 0;
 end
+
+disp(n_lo);
+disp(n_hi);
 
 % perform SVD factorization
 [U, S, V] = svd(A);
