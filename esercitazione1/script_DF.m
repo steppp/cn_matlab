@@ -14,3 +14,4 @@ loglog(h, exp_err)
 % get the minimum error and check it against eps
 h_min = min(exp_err)
 e_mach = eps
+

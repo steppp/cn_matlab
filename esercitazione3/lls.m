@@ -1,7 +1,7 @@
 % get problem data
 D = get_static_dataset();
 n = 2;
-useSVD = false;
+useSVD = true;
 
 x = D(:, 1);
 Y = D(:, end);
@@ -25,6 +25,7 @@ if useSVD   % SVD FACTORIZATION
     sRows = size(S, 1);
     sCols = size(S, 2);
 
+    % calculate the pseudoinverse matrix of S
     min_sizeS = min(sRows, sCols);
     S = S(1:min_sizeS, :);
     S = S(:, 1:min_sizeS);
@@ -34,27 +35,26 @@ if useSVD   % SVD FACTORIZATION
     pseudoS(:, min_sizeS+1:sRows) = zeros(min_sizeS, sRows - min_sizeS);
 
     alpha = V * pseudoS * U' * Y;
-    disp(alpha);
 else        % NORMAL EQUATION SYSTEM
     % compute the solution using mldivide
     alpha = mldivide(A' * A,  A' * Y);
-    disp(alpha);
-
-    X = A*alpha;
 end
+
+X = A*alpha;
 
 % plot the polynomial
 figure
 plotInterval = [min(x) * 0.9, max(x) * 1.1];
+alpha(end+1:6) = 0;
 
 fplot(@(x) alpha(1) + ...
     alpha(2) * x ...
     + alpha(3) * (x^2) ...
-    , plotInterval, '-r');
-%{
     + alpha(4) * (x^3) ...
     + alpha(5) * (x^4) ...
     + alpha(6) * (x^5) ...
+    , plotInterval, '-r');
+%{
     %}
 
 modeString = 'SISTEMA DELLE EQUAZIONI LINEARI';

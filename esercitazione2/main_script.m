@@ -9,7 +9,7 @@ n_sp_max = 5000;
 n_min = n_rand_min;
 n_max = n_rand_max;
 
-interval = n_sp_min:n_sp_max;
+interval = n_sp_min:500:n_sp_max;
 t = interval;
 n = interval;
 C = interval;
@@ -21,16 +21,16 @@ pC = interval;
 for i=interval
     %ni = i*10
     ni = i * 1;
+    disp(ni);
 
     % GENERATE LINEAR SYSTEM
     %A = randn(ni);
     %A = hilb(ni);
-    A = diag(ones(1, n-1), -1);
-    A = A + diag(ones(1, n-1), 1);
-    A = A + (eye(n) * 2.001);
+    A = diag(ones(1, ni-1), -1);
+    A = A + diag(ones(1, ni-1), 1);
+    A = A + (eye(ni) * 2.001);
     [B, d] = spdiags(A);
 
-    %{
     [ti, sol, Ci] = lr_solver(A, ni);
     t(i) = ti;
     n(i) = ni;
@@ -42,6 +42,7 @@ for i=interval
     pt(i) = pti;
     pC(i) = pCi;
 
+    %{
     [ti, sol, Ci] = chol_solver(A, ni);
 
     t(i) = ti;

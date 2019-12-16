@@ -22,11 +22,16 @@ Dal grafico si può notare come l'algoritmo di fattorizzazione LR senza impieghi
 
 La fattorizzazione di Cholesky è il terzo metodo diretto preso in cosiderazione in questa esercitazione, ed è applicabile solamente alle matrici **simmetriche** e **definite positive**. In MATLAB la funzione `hilb` crea una matrice che rispetta queste condizioni, e che quindi può essere fattorizzata proprio usando il metodo di Cholesky. Le matrici di Hilbert sono molto mal condizionate, come illustrato nel grafico seguente:
 
-![condizione hilbert](chol_cond_dim.png)
+![Numero di condizione per le matrici di Hilbert](chol_cond_dim.png)
 
 Come ci si aspettava dalla teoria, il numero di condizione cresce al crescere della dimensione, con una relazione lineare, almeno fino ad un certo punto. Per *n > 13*, si può osservare come questa relazione venga meno. Anche se poco intuitivo, questo fenomeno è probabilmente dovuto al modo in cui la funzione `cond` calcola il numero di condizione in questo caso, cioè tramite SVD. Questo può portare ad errori per valori di *n* grandi, ovvero l'n-esimo valore singolare, che sarà tanto piccolo
 da essere approssimato da *ε*. 
 
 Anche la funzione `chol` che applica la fattorizzazione di Cholesky ne risente: come evidenziato dal grafico sottostante che indica il tempo impiegato dall'algoritmo che realizza questa fattorizzazione per *n = 14* (e maggiori), `chol` non considera la matrice appena generata come matrice simmetrica e definita positiva, quindi non permette di calcolare la relativa fattorizzazione. Si può averne una conferma osservando gli autovalori ottenuti dalla funzione `eig`, in cui ne compaiono anche alcuni negativi.
 
-![tempo hilbert](chol_t_dim.png)
+![Tempo impiegato per fattorizzare una matrice di Hilbert](chol_t_dim.png)
+
+
+L'ultimo caso preso in considerazione riguarda la fattorizzazione di una matrice **tridiagonale** di dimensioni molto grandi (*n × n*, per n compreso tra 50 e 5000) memorizzata sia in forma completa che in forma sparsa tramite la funzione MATLAB `spdiags`.
+
+La memorizzazione in forma sparsa non si comporta molto diversamente dalla memorizzazione piena, se non per il fatto che la fattorizzazione risulta molto rallentata, ed occorre passare alla forma completa per il calcolo del numero di condizione.
